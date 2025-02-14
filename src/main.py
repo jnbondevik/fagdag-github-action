@@ -32,7 +32,7 @@ if __name__ == '__main__':
     #      - Write the ascii art to haiku.md
     #      - Commit and push the results!      
     if commit_is_haiku:
-        ascii_message = pyfiglet.Figlet.renderText(last_commit)
+        ascii_message = pyfiglet.figlet_format(last_commit)
         with open(file_path, 'w') as outfile:
             outfile.write(ascii_message)
         commit_and_push(repo, branch, file_path)
