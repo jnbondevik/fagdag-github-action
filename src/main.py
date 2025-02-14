@@ -24,8 +24,15 @@ if __name__ == '__main__':
     
     #TODO 
     # 1) Get the latest commit message
+    last_commit = get_latest_commit_message(pull_request)
     # 2) Check if the commit message follows the haiku format
+    commit_is_haiku = is_haiku(last_commit)
     # 3) If this is the case:
     #      - Generate ascii art from the commit message using pyfiglet 
     #      - Write the ascii art to haiku.md
     #      - Commit and push the results!      
+    if commit_is_haiku:
+        ascii_message = pyfiglet.Figlet.renderText(last_commit)
+        with open(file_path, 'w') as outfile:
+            outfile.write(ascii_message)
+        commit_and_push(repo, branch, file_path)
